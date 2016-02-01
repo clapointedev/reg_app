@@ -1,0 +1,52 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :firstName, "First Name*" %><br>
+    <%= f.text_field :firstName, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :lastName, "Last Name*" %><br>
+    <%= f.text_field :lastName, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :address1, "Address 1*" %><br>
+    <%= f.text_field :address1, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :address2 %><br>
+    <%= f.text_field :address2 %>
+  </div>
+  <div class="field">
+    <%= f.label :city, "City*" %><br>
+    <%= f.text_field :city, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :state, "State*" %><br>
+    <%= f.text_field :state, :required => true, :minlength => 2, :maxlength => 2 %>
+  </div>
+  <div class="field">
+    <%= f.label :zip, "Zip*" %><br>
+    <%= f.text_field :zip, :required => true, :maxlength => 10, :minlength => 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :country, "Country (US only)*" %><br>
+    <%= f.text_field :country, :required => true, :maxlength => 2, :minlength => 2 %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<p>*Required field</p>
